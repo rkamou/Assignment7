@@ -1,0 +1,45 @@
+*****************************
+Romuald Pogo Kamou ID#610151
+*****************************
+
+Lesson 7 Assignment
+
+1.
+	Code problem B) The code do not work because the function "equals" 
+	of the class "Employee" does not override "equals" of the super 
+	class "Object". In the function "removeDuplicates" since the type 
+	List is based on "Object", when comes to call "equals" of "Employee", 
+	the one embodied in "Object" is call.  Therefore, to solve the problem 
+	the only things to do is first to add the annotation: @Override, 
+	rewrite the signature de the function equal as : public boolean 
+	equals(Object obj) and finally adjust the code the function as it 
+	should do compare the equality of two objects of the "Employee".
+	........................................................................
+	
+	Code problem C) The code do not work because the function "hashCode" 
+	of the class "Employee" does not override "hashCode" of the super 
+	class "Object". In the function "removeDuplicates" since the type 
+	HashMap is based on "Object", when comes to call "containsKey", 
+	it invokes the function "hashCode" embodied in "Object" which cannot 
+	generate the appropriate hashCode of an "Employee". Therefore, 
+	to solve the problem the only things to do is to override the 
+	function hashCode as below : 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + salary;
+		return result;
+	}
+	........................................................................
+	
+	Code problem D) The code do not work because the function 
+	"removeDuplicates" when the double of an "Employee" is found the one 
+	already in the HashMap and the return List is modified by calling the 
+	"setVisited(true)". Therefore, when comes to compare an objects
+	"Employee" the attribute "visited" influences de result. 
+	This problem can be solve by removing the test on the attribute 
+	"visited" in the function "equal" of "Employee".
+	 
+	 
